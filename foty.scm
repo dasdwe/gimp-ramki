@@ -66,10 +66,34 @@
           (height (car (gimp-image-height img)))
           (newWidth (+ (car (gimp-image-width img)) (* frame-size 2) (* frame2-size 2)))
           (newHeight (+ (car (gimp-image-height img)) frame-size frame-size-bottom (* frame2-size 2)))
-          (frame-color (cond ((= colors-set 0) '(0 0 0))((= colors-set 1) '(255 255 255))(else use-frame-color)))
-          (frame2-color (cond ((= colors-set 0) '(255 255 255))((= colors-set 1) '(0 0 0))(else use-frame2-color)))
-          (podpis-font-color (cond ((= colors-set 0) '(255 255 255))((= colors-set 1) '(0 0 0))(else use-podpis-font-color)))
-          (source-font-color (cond ((= colors-set 0) '(164 164 164))((= colors-set 1) '(76 76 76))(else use-source-font-color)))
+
+          ; Kolor ramki
+          (frame-color (cond ((= colors-set 0) '(0 0 0))
+                             ((= colors-set 1) '(255 255 255))
+                             (else use-frame-color)
+                        )
+          )
+
+          ; Kolor obramowania
+          (frame2-color (cond ((= colors-set 0) '(255 255 255))
+                              ((= colors-set 1) '(0 0 0))
+                              (else use-frame2-color)
+                        )
+          )
+
+          ; Kolor czcionki podpisu zdjecia
+          (podpis-font-color (cond ((= colors-set 0) '(255 255 255))
+                                   ((= colors-set 1) '(0 0 0))
+                                   (else use-podpis-font-color)
+                             )
+          )
+
+          ; Kolor czcionki zrodla
+          (source-font-color (cond ((= colors-set 0) '(164 164 164))
+                                   ((= colors-set 1) '(76 76 76))
+                                   (else use-source-font-color)
+                             )
+          )
          )
 
         (gimp-image-resize img newWidth newHeight (+ frame-size frame2-size) (+ frame-size frame2-size))
